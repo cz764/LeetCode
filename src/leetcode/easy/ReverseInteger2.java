@@ -1,6 +1,5 @@
 package leetcode.easy;
 
-import java.math.BigInteger;
 import java.util.Stack;
 
 /**
@@ -29,7 +28,7 @@ public class ReverseInteger2 {
             while (!stack.isEmpty()) {
                 int digit = stack.pop();
                 int decimal = (int)(digit * Math.pow(10, count++));
-                sum = Math.addExact(sum, decimal);
+//                sum = Math.addExact(sum, decimal);
             }
             return x >= 0 ? sum : -sum;
         } catch (ArithmeticException e) {
