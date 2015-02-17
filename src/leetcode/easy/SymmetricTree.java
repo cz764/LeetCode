@@ -24,36 +24,19 @@ public class SymmetricTree {
 
         System.out.println("is symmentric: " + isSymmetric(n1));
 
-        System.out.println("preOrder: " + preOrder(n1));
-        System.out.println("postOrder: " + postOrder(n1));
     }
 
     public static boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
-        return preOrder(root).equals(postOrder(root));
+        return search(root.left, root.right);
     }
 
-    public static String preOrder(TreeNode node) {
-        StringBuffer sb = new StringBuffer();
-
-        if (node != null) {
-            sb.append(node.val);
-            preOrder(node.left);
-            preOrder(node.right);
-        }
-
-        return sb.toString();
-    }
-
-    public static String postOrder(TreeNode node) {
-        StringBuffer sb = new StringBuffer();
-
-        if (node != null) {
-            postOrder(node.left);
-            postOrder(node.right);
-            sb.append(node.val);
-        }
-
-        return sb.toString();
+    public static boolean search(TreeNode left, TreeNode right) {
+        if (left == null && right == null)
+            return true;
+        else if (left != null && right != null && left.val == right.val)
+            return search(left.left, right.right) && search(left.right, right.left);
+        else
+            return false;
     }
 }
